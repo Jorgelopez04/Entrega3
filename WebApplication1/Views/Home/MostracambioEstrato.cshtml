@@ -1,0 +1,29 @@
+﻿@model WebApplication1.Models.Persona
+@{
+    ViewBag.Title = "MostrarcambioEstrato";
+}
+
+<html>
+<head>
+    <title>CambioEstrato</title>
+    <link rel="stylesheet" href="~/Content/PersonaVista.css" />
+</head>
+<body>
+    <div>
+        <h3>Cambio de estrato registrado con éxito</h3>
+        <form action="Home/EPSchangeView" method="post">
+            <table>
+
+                <tr>
+                    <td><label>El paciente identificado con el numero: @Model.Identificacion </label></td>
+                </tr>
+                <tr>
+                    <td><label>Presenta una nuevo estrato: @Model.Cliente.Estrato</label></td>
+                </tr>
+
+            </table>
+        </form>
+    </div>
+</body>
+</html>
+

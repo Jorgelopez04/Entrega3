@@ -1,0 +1,38 @@
+﻿
+@model WebApplication1.Models.Persona
+@{
+    ViewBag.Title = "Persona";
+}
+
+<html>
+<head>
+    <title>Persona</title>
+    <link rel="stylesheet" href="~/Content/PersonaVista.css" />
+</head>
+<body>
+    <div>
+        <h3>Paciente registrado con éxito</h3>
+        <form action="Persona/Persona" method="post">
+            <table>
+
+                <tr>
+                    <td><label>Identificación: @Model.Identificacion </label></td>
+                </tr>
+                <tr>
+                    <td><label>Nombre: @Model.Nombre</label></td>
+                </tr>
+                <tr>
+                    <td><label>Apellidos: @Model.Apellidos</label></td>
+                </tr>
+                <tr>
+                    <td><label>Fecha nacimiento: @Model.FechaNacimiento.ToString("dd/MM/yyyy")</label></td>
+                </tr>
+                <tr>
+                    <td><label>Tipo de Regimen: @Model.Cliente.Estrato</label></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</body>
+</html>
+

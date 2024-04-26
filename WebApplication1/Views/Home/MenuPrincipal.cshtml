@@ -1,0 +1,72 @@
+﻿
+@{
+    ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="~/Content/PersonaVista.css" />
+</head>
+<body>
+    <br>
+    <h1 style="text-align: center;">Cuenta de servicios   </h1>
+
+    <br />
+    <div class="container">
+        <div class="image">
+            
+
+            <h3>
+                Herramienta digital que ayuda a los usuarios de una empresa de servicios
+                a llevar de una manera mas clara sus gastos mensuales.
+            </h3>
+            <h2 style="text-align: center;">Menú</h2>
+
+        </div>
+
+    </div>
+    <div class="buttons">
+        @using (Html.BeginForm("registro", "Home", FormMethod.Post))
+        {
+            <style>
+                .boton-minimalista {
+                    background-color: transparent;
+                    border: 2px solid #333;
+                    color: #333;
+                    font-size: 16px;
+                    padding: 10px 20px;
+                }
+            </style>
+
+            <button id="miBoton1" class="boton-minimalista"> Registro usuario...............................................</button>
+        }
+        @using (Html.BeginForm("cambioEstrato", "Home", FormMethod.Post))
+        {
+            <button id="miboton2" class="boton-minimalista"> Cambio de Estrato....................................................</button>
+        }
+        @using (Html.BeginForm("cambioEnergia", "Home", FormMethod.Post))
+        {
+            <button id="miboton3" class="boton-minimalista"> Cambio de datos de la energia....................................................</button>
+        }
+        @using (Html.BeginForm("cambioAgua", "Home", FormMethod.Post))
+        {
+            <button id="miboton4" class="boton-minimalista"> Cambio de datos del agua....................................................</button>
+        }
+
+        {
+        <style>
+            .boton-minimalista1 {
+                background-color: transparent;
+                border: 2px solid red;
+                color: #333;
+                font-size: 16px;
+                padding: 10px 20px;
+            }
+        </style>
+        <button id="miboton6" class="boton-minimalista1"> Estadisticas............................................................</button>
+        }
+    </div>
+</body>
+</html>
+
