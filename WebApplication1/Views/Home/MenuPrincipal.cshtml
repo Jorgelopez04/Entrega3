@@ -10,12 +10,12 @@
 </head>
 <body>
     <br>
-    <h1 style="text-align: center;">Cuenta de servicios   </h1>
+    <h1 style="text-align: center;">Servicios   </h1>
 
     <br />
     <div class="container">
         <div class="image">
-            
+           
 
             <h3>
                 Herramienta digital que ayuda a los usuarios de una empresa de servicios
@@ -45,27 +45,23 @@
         {
             <button id="miboton2" class="boton-minimalista"> Cambio de Estrato....................................................</button>
         }
-        @using (Html.BeginForm("cambioEnergia", "Home", FormMethod.Post))
+        @using (Html.BeginForm("cambioMetaahorro", "Home", FormMethod.Post))
         {
-            <button id="miboton3" class="boton-minimalista"> Cambio de datos de la energia....................................................</button>
+            <button id="miboton3" class="boton-minimalista"> Cambio de meta...........................</button>
         }
-        @using (Html.BeginForm("cambioAgua", "Home", FormMethod.Post))
+        @using (Html.BeginForm("cambioConsumoEnergia", "Home", FormMethod.Post))
         {
-            <button id="miboton4" class="boton-minimalista"> Cambio de datos del agua....................................................</button>
+            <button id="miboton3" class="boton-minimalista"> Cambio de consumo de energia...........................</button>
         }
+        @using (Html.BeginForm("cambioPromedioAgua", "Home", FormMethod.Post))
+        {
+            <button id="miboton3" class="boton-minimalista"> Cambio del promedio de agua...........................</button>
+        }
+        @using (Html.BeginForm("cambioConsumoAgua", "Home", FormMethod.Post))
+        {
+            <button id="miboton3" class="boton-minimalista"> Cambio de consumo de agua...........................</button>
+        }      
 
-        {
-        <style>
-            .boton-minimalista1 {
-                background-color: transparent;
-                border: 2px solid red;
-                color: #333;
-                font-size: 16px;
-                padding: 10px 20px;
-            }
-        </style>
-        <button id="miboton6" class="boton-minimalista1"> Estadisticas............................................................</button>
-        }
     </div>
 </body>
 </html>

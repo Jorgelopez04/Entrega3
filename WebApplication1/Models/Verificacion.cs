@@ -46,11 +46,11 @@ namespace WebApplication1.Models
             return false;
 
         }
-        public bool verificarsielconsumoactualdeEnergiaeselMismo(int id, int metaahorroactual)
+        public bool verificarsielconsumoactualdeEnergiaeselMismo(int id, int consumoactualenergia)
         {
             foreach (Persona cliente in listaDeClientes)
             {
-                if (cliente.Identificacion == id && cliente.Cliente.Metaahorroenergia == metaahorroactual)
+                if (cliente.Identificacion == id && cliente.Cliente.Consumoactualenergia == consumoactualenergia)
                 {
                     return true;
                 }
@@ -59,11 +59,11 @@ namespace WebApplication1.Models
             return false;
 
         }
-        public bool verificarsielpromedioactualdeConsumodeAguaeselMismo(int id, int metaahorroactual)
+        public bool verificarsielpromedioactualdeConsumodeAguaeselMismo(int id, int promedioconsumoagua)
         {
             foreach (Persona cliente in listaDeClientes)
             {
-                if (cliente.Identificacion == id && cliente.Cliente.Metaahorroenergia == metaahorroactual)
+                if (cliente.Identificacion == id && cliente.Cliente.Promedioconsumodeagua == promedioconsumoagua)
                 {
                     return true;
                 }
@@ -72,11 +72,11 @@ namespace WebApplication1.Models
             return false;
 
         }
-        public bool verificarsielConsumodeAguaeselMismo(int id, int metaahorroactual)
+        public bool verificarsielConsumodeAguaeselMismo(int id, int consumoagua)
         {
             foreach (Persona cliente in listaDeClientes)
             {
-                if (cliente.Identificacion == id && cliente.Cliente.Metaahorroenergia == metaahorroactual)
+                if (cliente.Identificacion == id && cliente.Cliente.Consumoactualagua == consumoagua)
                 {
                     return true;
                 }

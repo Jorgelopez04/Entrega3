@@ -182,14 +182,16 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\registro.cshtml" />
     <Content Include="Views\Home\Mostrarregistro.cshtml" />
-    <Content Include="Views\Home\estadistica.cshtml" />
     <Content Include="Views\Home\MenuPrincipal.cshtml" />
     <Content Include="Views\Home\RegistroObligatorio.cshtml" />
     <Content Include="Views\Home\cambioEstrato.cshtml" />
     <Content Include="Views\Home\MostracambioEstrato.cshtml" />
-    <Content Include="Views\Home\cambiosEnergia.cshtml" />
-    <Content Include="Views\Home\cambiosAgua.cshtml" />
-    <Content Include="Views\Home\MostrarcambioEnergia.cshtml" />
+    <Content Include="Views\Home\cambioMetaahorro.cshtml" />
+    <Content Include="Views\Home\MostrarcambioMetaahorro.cshtml" />
+    <Content Include="Views\Home\MostrarcambioConsumoEnergia.cshtml" />
+    <Content Include="Views\Home\cambioPromedioAgua.cshtml" />
+    <Content Include="Views\Home\MostrarcambioPromedioAgua.cshtml" />
+    <Content Include="Views\Home\cambioConsumoAgua.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

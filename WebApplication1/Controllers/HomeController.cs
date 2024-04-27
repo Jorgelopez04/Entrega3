@@ -48,7 +48,7 @@ namespace WebApplication1.Controllers
             {
                 TempData["Notificacion"] = "El usuario no se encuentra en el sistema";
             }
-            
+
             else if (program.verificarInfo.verificarsielEstratoeselMismo(identificacion, estrato))
             {
                 TempData["Notificacion"] = "El paciente ya se encuentra en este estrato";
@@ -84,7 +84,7 @@ namespace WebApplication1.Controllers
             int consumoactualenergia;
             int promedioconsumodeagua;
             int consumoactualagua;
-            
+
 
             identificacion = Convert.ToInt32(Request.Form["identificacion"]);
             nombre = Convert.ToString(Request.Form["nombre"]);
@@ -103,9 +103,9 @@ namespace WebApplication1.Controllers
                 return RedirectToAction("registro");
             }
             Cliente cliente = new Cliente(identificacion, estrato, metaahorroenergia, consumoactualenergia, promedioconsumodeagua, consumoactualagua);
-            
 
-            Persona persona = new Persona(identificacion, nombre, apellidos, fechaNacimiento,cliente);
+
+            Persona persona = new Persona(identificacion, nombre, apellidos, fechaNacimiento, cliente);
 
 
             program.ingresarCliente(persona);
@@ -113,32 +113,115 @@ namespace WebApplication1.Controllers
 
 
         }
-        public ActionResult modificarClienteEnergia()
-        {
-            ViewBag.Notificacion = TempData["NotificacionRegimeChange"];
-            return View();
-        }
-        public ActionResult verificarParaActualizarEnergia()
-        {
-            
-            int idCliente = Convert.ToInt32(Request.Form["identificacion"]);
 
-            // Verificar si el cliente existe en el sistema
-            if (!program.VerificarInfo.verificarExistenciaDeIdentidad(idCliente))
+       
+        public ActionResult verificarParacambioMeta()
+        {
+            int id;
+            id = Convert.ToInt32(Request.Form["idcambioMetaahorro"]);
+
+            if (program.VerificarInfo.verificarExistenciaDeIdentidad(id) == false)
             {
-                // Si el cliente no se encuentra, establecer un mensaje de notificación y redirigir a la página correspondiente
-                TempData["NotificacionActualizarEnergia"] = "El cliente no se encuentra en el sistema";
-                return RedirectToAction("mostrarActualizarEnergia");
+                TempData["NotificacionActualizarCosto"] = "El paciente no se encuentra en el sistema";
             }
             else
             {
-                // Si el cliente existe, guardar temporalmente su ID y redirigir a la página para actualizar la información de energía
-                TempData["IdClienteActualizarEnergia"] = idCliente.ToString();
-                TempData.Keep("IdClienteActualizarEnergia");
-                return RedirectToAction("mostrarActualizarEnergia");
+                string idMomentaneo = Convert.ToString(id);
+                TempData["idMomentaneoCosto"] = idMomentaneo;
+                TempData.Keep("idMomentaneoCosto");
+                return RedirectToAction("mostrarActualizarCosto");
+
+            }
+            return RedirectToAction("actualizarCosto");
+        }
+        public ActionResult mostrarcambioMetaahorro()
+        {
+            Persona paciente = program.obtenerClientePorId(id);
+            if (paciente != null)
+            {
+                return View(paciente);
+            }
+            else
+            {
+                TempData["Notificacion"] = "El paciente no se encuentra en el sistema";
+                return RedirectToAction("cambioMetaahorro");
             }
         }
+        [HttpPost]
+        public ActionResult CambioMetaahorro(int idcambioMetaahorro, int nuevaMeta)
+        {
+            Persona paciente = program.obtenerClientePorId(idcambioMetaahorro);
+            if (paciente != null)
+            {
+                program.CambiarInfo.cambiarMetadeAhorrodeEnergia(paciente, nuevaMeta);
+                TempData["Notificacion"] = "Meta de ahorro de energía actualizada correctamente.";
+            }
+            else
+            {
+                TempData["Notificacion"] = "El paciente no se encuentra en el sistema.";
+            }
+
+            return RedirectToAction("cambioMetaahorro");
+        }
+
+        public ActionResult verificarParacambioConsumoEnergia()
+        {
+            int id;
+            id = Convert.ToInt32(Request.Form["idcambioConsumoAgua"]);
+
+            if (program.VerificarInfo.verificarExistenciaDeIdentidad(id) == false)
+            {
+                TempData["NotificacionActualizarCosto"] = "El paciente no se encuentra en el sistema";
+            }
+            else
+            {
+                string idMomentaneo = Convert.ToString(id);
+                TempData["idMomentaneoCosto"] = idMomentaneo;
+                TempData.Keep("idMomentaneoCosto");
+                return RedirectToAction("MostrarcambioConsumoEnergia");
+
+            }
+            return RedirectToAction("actualizarCosto");
+        }
+        public ActionResult mostrarcambioConsumoEnergia()
+        {
+            string dato = (string)TempData["idMomentaneoCosto"];
+            TempData.Keep("idMomentaneoCosto");
+            int datoEntero = Convert.ToInt32(dato);
+            Persona paciente = program.obtenerClientePorId(datoEntero);
+            ViewBag.Notificacion = TempData["cambioConsumoActualdeEnergiaRealizado"];
+            return View(paciente);
+        }
+        public ActionResult cambioConsumoEnergia()
+        {
+            string dato = (string)TempData["idMomentaneoCosto"];
+            int datoEntero = Convert.ToInt32(dato);
+            int consumoactualenergia = Convert.ToInt32(Request.Form["nuevoConsumo"]);
+            Persona persona = program.obtenerClientePorId(datoEntero);
+            program.CambiarInfo.cambiarConsumoActualdeEnergia(persona, consumoactualenergia);
+
+            TempData["cambioCostoTratamientosRealizado"] = "El costo de los tratamientos del paciente se ha actualizado con éxito";
+            return RedirectToAction("MostrarcambioConsumoEnergia");
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     }
 }
+
+
+
+

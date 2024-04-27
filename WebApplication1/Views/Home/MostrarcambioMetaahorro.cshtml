@@ -1,0 +1,63 @@
+﻿@model WebApplication1.Models.Persona
+
+@{
+    ViewBag.Title = "Cambiar meta de ahorro";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<html>
+<head>
+    <title>Actualizar Meta de ahorro</title>
+    <link rel="stylesheet" href="~/Content/PersonaVista.css" />
+</head>
+<body>
+    <div>
+        <h3>Actualizar Meta de ahorro</h3>
+        @if (Model != null) // Verifica si Model no es nulo
+        {
+            <form action="cambioHistoriaClinica" method="post">
+                <table>
+                    @if (!string.IsNullOrEmpty(ViewBag.Notificacion))
+                    {
+                        <div class="alert alert-success">@ViewBag.Notificacion</div>
+                    }
+
+                    <tr>
+                        <td><label>El paciente identificado con el numero:  </label></td>
+                        <td><div class="text-muted">@Model.Identificacion</div></td>
+                    </tr>
+
+                    <tr>
+                        <td><label>Presenta esta historia clinica: </label></td>
+                        <td><div class="text-muted">@Model.Cliente.Metaahorroenergia</div></td>
+                    </tr>
+
+                    @using (Html.BeginForm("cambioMetaahorro", "Home", FormMethod.Post))
+                    {
+                        <tr>
+                            <td><label>Nueva Meta de ahorro:  </label></td>
+                            <td><input type="text" name="nuevaMetaAhorro" pattern="[a-zA-Z.,:;()¿?¡! ]+" required /></td>
+                        </tr>
+                        <tr>
+                            <td><input type="submit" name="enviar" value="Enviar" /></td>
+                        </tr>
+                    }
+                </table>
+            </form>
+        }
+        else
+        {
+            <p>El modelo no está inicializado correctamente.</p>
+        }
+    </div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

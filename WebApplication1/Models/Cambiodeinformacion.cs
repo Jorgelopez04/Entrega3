@@ -23,7 +23,14 @@ namespace WebApplication1.Models
         }
         public void cambiarMetadeAhorrodeEnergia(Persona cliente, int metaahorroenergia)
         {
-            cliente.Cliente.Metaahorroenergia = metaahorroenergia;
+            if (cliente != null && cliente.Cliente != null)
+            {
+                cliente.Cliente.Metaahorroenergia = metaahorroenergia;
+            }
+            else
+            {
+                
+            }
         }
         public void cambiarConsumoActualdeEnergia(Persona cliente, int consumoactualenergia)
         {
@@ -37,25 +44,6 @@ namespace WebApplication1.Models
         {
             cliente.Cliente.Consumoactualagua = consumoactualagua;
         }
-        public void modificarClienteEnergia(int identificacion, int nuevoMetaAhorroEnergia, int nuevoConsumoActualEnergia)
-        {
-            
-            Persona clienteAModificar = listaDeClientes.FirstOrDefault(p => p.Identificacion == identificacion);
-            if (clienteAModificar != null)
-            {
-                
-                
-                clienteAModificar.Cliente.Metaahorroenergia = nuevoMetaAhorroEnergia;
-                clienteAModificar.Cliente.Consumoactualenergia = nuevoConsumoActualEnergia;
-
-                Console.WriteLine($"Información de energía del cliente con identificación {identificacion} modificada correctamente.");
-            }
-            else
-            {
-                Console.WriteLine($"No se encontró ningún cliente con identificación {identificacion}.");
-            }
-        }
-
 
 
     }

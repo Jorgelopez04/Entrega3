@@ -1,0 +1,31 @@
+﻿@{@model WebApplication1.Models.Persona
+
+@{
+    ViewBag.Title = "Cambiar Meta de Ahorro de Energía";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@if (!string.IsNullOrEmpty(ViewBag.Notificacion))
+{
+    <div class="alert alert-danger">@ViewBag.Notificacion</div>
+}
+
+@using (Html.BeginForm("CambioMetaahorro", "Home", FormMethod.Post))
+{
+    <div>
+        <label>El paciente identificado con el número: @Model.Identificacion</label>
+    </div>
+    <div>
+        <label>Meta de Ahorro de Energía Actual: @Model.Cliente.Metaahorroenergia</label>
+    </div>
+    <div>
+        <label>Nueva Meta de Ahorro de Energía:</label>
+        <input type="number" name="nuevaMeta" required />
+    </div>
+    <input type="submit" value="Guardar Cambios" />
+}
+
+
+
